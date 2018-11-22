@@ -1,12 +1,14 @@
 cask 'drjava' do
   version '20160913-225446,beta'
-  sha256 'e26b5ca518585ec3d9500d6709e4c1cd2ad41ea041606762cc66254af9c7f431'
+  sha256 '701c3638049b99aa59cfcb2a9874493496d20ffb34370e67935bb6f64fa5ae91'
 
   # downloads.sourceforge.net/drjava/ was verified as official when first introduced to the cask
-  url "https://downloads.sourceforge.net/drjava/1.%20DrJava%20Stable%20Releases/drjava-#{version.after_comma}-#{version.before_comma}/drjava-#{version.after_comma}-#{version.before_comma}-osx.tar.gz"
+  url "https://downloads.sourceforge.net/projects/drjava/files/1.%20DrJava%20Stable%20Releases/drjava-#{version.after_comma}-#{version.before_comma}/drjava-#{version.after_comma}-#{version.before_comma}.jar"
   appcast 'https://sourceforge.net/projects/drjava/rss?path=/1.%20DrJava%20Stable%20Releases'
   name 'DrJava'
   homepage 'http://www.drjava.org/'
+  depends_on java: ['7', '8']
 
-  app 'DrJava.app'
+  container type: :naked
+  app "drjava-#{version.after_comma}-#{version.before_comma}/#{version.after_comma}-#{version.before_comma}.jar", target: 'DrJava.jar'
 end
