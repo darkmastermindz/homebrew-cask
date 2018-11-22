@@ -7,7 +7,7 @@ cask 'drjava' do
   appcast 'https://sourceforge.net/projects/drjava/rss?path=/1.%20DrJava%20Stable%20Releases'
   name 'DrJava'
   homepage 'http://www.drjava.org/'
-  depends_on java: ['7', '8']
+  depends_on java: '8'
 
   container type: :naked
   app "drjava-#{version.after_comma}-#{version.before_comma}/#{version.after_comma}-#{version.before_comma}.jar", target: 'DrJava.jar'
