@@ -1,0 +1,39 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Fork Sync
+      uses: TG908/fork-sync@v1.1.6
+      with:
+        # Owner of the forked repository
+        owner: darkmastermindz
+        # Token for the github API
+        github_token: 492ed9b365b80cadd111d97e502c11496ef6f1ba 
+        # Branch to track
+        head: master
+        # Branch to keep updated
+        base: master
+        # Merge method to use
+        merge_method: merge
+        # The title of the pull request
+        pr_title: Fork Sync
+        # The message in the pull request
+        pr_message: Sync Fork with Homebrew/homebrew-cask
